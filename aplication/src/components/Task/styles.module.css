@@ -1,0 +1,74 @@
+div.task {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    
+    border-radius: 8px;
+    padding: 1rem;
+    column-gap: .75rem;
+    width: 100%;
+    background-color: var(--gray500);
+}
+
+div.task input{
+    display: none;
+}
+div.task label::after   {
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    width: 1.090rem;
+    height: 1.090rem;
+    border-radius: .7rem;
+    border: 2px solid var(--blue400);
+    transition: .1s ease-in-out background-color;
+
+}
+div.task label:hover::after{
+    background-color: var(--blue700);
+    filter: opacity(.9);
+}
+
+
+
+
+
+div.task input:checked + label::after{
+    background-color: var(--purple700);
+    border-color: var(--purple700);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: .1s ease-in-out background-color;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.43059 0.342154L4.09865 4.67409L1.61618 2.19162L0.780273 3.02753L4.09865 6.3459L9.26649 1.17806L8.43059 0.342154Z' fill='%23F2F2F2'/%3E%3C/svg%3E ");
+}
+
+div.task input:checked + label:hover::after{
+    background-color: var(--purple400);
+    border-color: var(--purple400);
+}
+
+
+div.task p{
+    vertical-align: baseline;
+    line-height: normal;
+    font-size: .875rem
+}
+
+div.task .imageContent{
+    padding: 0.3125rem;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 4px;
+ 
+}
+div.task .imageContent:hover{
+    background-color: var(--gray400);
+}
+
+div.task svg:hover{
+
+
+ 
+    color: var(--danger);
+}

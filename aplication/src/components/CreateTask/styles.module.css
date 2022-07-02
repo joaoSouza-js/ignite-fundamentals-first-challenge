@@ -1,3 +1,7 @@
+section.createTaskContainer{
+    width: 100%;
+}
+
 section.createTaskContainer form{
     display: flex;
     column-gap: .5rem;
