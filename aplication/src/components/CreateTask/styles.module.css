@@ -1,0 +1,46 @@
+section.createTaskContainer form{
+    display: flex;
+    column-gap: .5rem;
+}
+
+section.createTaskContainer form textarea {
+    padding: 1rem;
+    width: 39.25rem;
+    border-radius: 8px;
+    background-color: var(--gray500);
+    resize: none;
+    height: 3.375rem;
+    transition: .1s box-shadow;
+}
+section.createTaskContainer form textarea::placeholder{
+    color: var(--gray300);
+}
+
+section.createTaskContainer form textarea::-webkit-scrollbar{
+    display: none;
+}
+section.createTaskContainer form textarea:focus{
+    box-shadow: 0px 0px 0px 1px var(--purple700);
+}
+
+section.createTaskContainer form button{
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    
+
+    color: var(--gray100);
+    background-color: var(--blue700);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: .875rem;
+    font-weight: bold;
+    transition: .3s background-color;
+}
+section.createTaskContainer form button:hover{
+    background-color: var(--blue400);
+}
+section.createTaskContainer form button svg{
+    font-size: 1rem;
+ 
+}

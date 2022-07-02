@@ -1,0 +1,10 @@
+main.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: -1.6875rem  auto 0 auto;
+    max-width: 46rem;
+    
+}
