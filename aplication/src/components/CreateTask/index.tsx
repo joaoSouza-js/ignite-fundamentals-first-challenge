@@ -27,7 +27,7 @@ export function CreateTask({
         {
             id: taskId,
             content: taskTextContent,
-            isCompleted: false 
+            isCompleted: false
         }
         
         setAllTasks(state => {

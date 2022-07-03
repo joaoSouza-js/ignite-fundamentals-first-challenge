@@ -8,6 +8,7 @@ div.task {
     column-gap: .75rem;
     width: 100%;
     background-color: var(--gray500);
+    margin-top: .75rem;
 }
 
 div.task input{
@@ -50,21 +51,26 @@ div.task input:checked + label:hover::after{
 
 
 div.task p{
+    flex: 1;
     vertical-align: baseline;
     line-height: normal;
     font-size: .875rem
 }
 
-div.task .imageContent{
+div.task button{
+    background-color: transparent;
+    color: var(--gray200);
+    margin-top: -0.3125rem;
     padding: 0.3125rem;
     display: flex;
     align-items: flex-start;
     border-radius: 4px;
  
 }
-div.task .imageContent:hover{
+div.task button:hover{
     background-color: var(--gray400);
 }
+
 
 div.task svg:hover{
 

@@ -15,12 +15,24 @@ export interface  task {
 }
 
 function App() {
-  const [allTaks, setAllTasks] = useState<task[]>([])
+  const [allTasks, setAllTasks] = useState<task[]>([])
   const [taskTextContent, setTaskTextContent] = useState('')
 
-  const tasksDone = allTaks.filter(task =>{
+  const tasksDone = allTasks.filter(task =>{
     return task.isCompleted === true
   })
+
+  function deleteOneTask(taskId: number){
+
+    const allTasksWithoutOne = allTasks.filter(task => {
+      return task.id != taskId
+    })
+
+    setAllTasks( state => {
+      return allTasksWithoutOne
+    })
+
+  }
 
 
 
@@ -36,16 +48,24 @@ function App() {
         
         <section className={styles.taskStatus}>
           <div className={styles.created}>
-            <strong>Tarefas Criadas</strong> <span>0</span>
+            <strong>Tarefas Criadas</strong>
+            <span>{allTasks.length}</span>
           </div>
           <div className={styles.done}>
-            <strong> Cuncluídas</strong> <span>{tasksDone.length}</span>
+            <strong> Cuncluídas</strong>
+             <span>
+              {
+                tasksDone.length === 0
+                ? tasksDone.length
+                : `${tasksDone.length} de ${allTasks.length}`
+              }
+             </span>
           </div>
         </section>
 
         <article className={styles.tasks}>
           { 
-            allTaks.length === 0
+            allTasks.length === 0
             ?
               <div className={styles.withoutTask}>
                 <img src={clipBoardImage} alt="" />
@@ -56,9 +76,12 @@ function App() {
               </div> 
 
             :
-            allTaks.map(task =>{
+            allTasks.map(task =>{
               return(
                 <Task
+                  id={task.id}
+                  content= {task.content}
+                  onDeleteOneTask = {deleteOneTask}
                   key={task.id}
                 />
               )

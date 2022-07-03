@@ -3,29 +3,36 @@ import { useState } from 'react'
 
 import styles from './styles.module.css'
 
-export function Task(){
-    const [isRadioChecked, setIsRadioChecked] = useState(false)
+interface TaskProps{
+    id: number
+    content: string,
+    onDeleteOneTask: (taskId:number) => void
+}
 
-    function handleInputRadioChecked(){
-        isRadioChecked 
-        ? setIsRadioChecked(false)
-        : setIsRadioChecked(true)
+export function Task({content,id,onDeleteOneTask}:TaskProps){
+
+    function handleDeleteOneTask(){
+        onDeleteOneTask(id)
     }
 
     return(
         <div className={styles.task}>
             <input 
-                id='checkbox01'
+                id={`checkbox${id}`}
                 type='checkbox'
                 
             />
-            <label htmlFor="checkbox01"/>
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-            <div className={styles.imageContent}>
+            <label htmlFor={`checkbox${id}`}/>
+            <p>{content}</p>
+           
+            <button
+                onClick={handleDeleteOneTask}
+                title='Lixiera'>
                 <Trash
                     size={'1.090rem'}
                 />
-            </div>
+            </button>
+            
         </div>
     )
 }

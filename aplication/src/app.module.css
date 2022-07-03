@@ -39,9 +39,10 @@ main.container section.taskStatus div span{
     align-items: center;
 
     background-color: var(--gray400);
+    padding: 4px;
     text-align: center;
     height: 1.1875rem;
-    width: 1.5625rem;
+    min-width: 1.5625rem;
     border-radius: 999px;
 
 }
