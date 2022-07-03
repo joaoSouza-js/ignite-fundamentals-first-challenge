@@ -27,7 +27,7 @@ div.task label::after   {
 }
 div.task label:hover::after{
     background-color: var(--blue700);
-    filter: opacity(.9);
+    filter: opacity(.8);
 }
 
 
@@ -54,7 +54,8 @@ div.task p{
     flex: 1;
     vertical-align: baseline;
     line-height: normal;
-    font-size: .875rem
+    font-size: .875rem;
+    transition:  .5s text-decoration ;
 }
 
 div.task button{

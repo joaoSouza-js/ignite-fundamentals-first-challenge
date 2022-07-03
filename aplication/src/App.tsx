@@ -34,6 +34,20 @@ function App() {
 
   }
 
+function checkCompletedTask(taskId: number){
+  const allTaksWithIsCompletdUpdate = allTasks.map(task => {
+    if(task.id === taskId){
+      task.isCompleted
+      ? task.isCompleted = false
+      : task.isCompleted = true
+      
+    }
+    return task
+
+  })
+  setAllTasks(allTaksWithIsCompletdUpdate)
+}
+
 
 
   return (
@@ -46,7 +60,9 @@ function App() {
           setTaskTextContent = {setTaskTextContent}
         />
         
-        <section className={styles.taskStatus}>
+        <section
+
+         className={styles.taskStatus}>
           <div className={styles.created}>
             <strong>Tarefas Criadas</strong>
             <span>{allTasks.length}</span>
@@ -79,18 +95,15 @@ function App() {
             allTasks.map(task =>{
               return(
                 <Task
-                  id={task.id}
-                  content= {task.content}
+                  task = {task}
                   onDeleteOneTask = {deleteOneTask}
+                  onCheckCompletedTask = {checkCompletedTask}
                   key={task.id}
                 />
               )
             })
-          }
-            
+          }    
         </article>
-
-
       </main>
     </div>
   )

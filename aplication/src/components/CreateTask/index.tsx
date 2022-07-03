@@ -1,5 +1,5 @@
 import {PlusCircle} from 'phosphor-react'
-import { ChangeEvent,FormEvent,SetStateAction, useState } from 'react'
+import { ChangeEvent,FormEvent,isValidElement,SetStateAction, useState } from 'react'
 import { task } from '../../App'
 import styles from './styles.module.css'
 
@@ -15,6 +15,8 @@ export function CreateTask({
     setAllTasks}:CreateTaskProps){
 
     const [taskId, setTaskId] = useState(1)
+
+    const IsInvalidTextArea = taskTextContent === ''
 
     function handleChangeTaskTextContent(event: ChangeEvent<HTMLTextAreaElement>){
         setTaskTextContent(event.target.value)
@@ -44,10 +46,16 @@ export function CreateTask({
         <section className={styles.createTaskContainer}>
             <form onSubmit={handleAddNewTask}>
                 <textarea 
+                    required
+                    
                     value={taskTextContent}
                     onChange={handleChangeTaskTextContent}
-                    placeholder='Adicione uma nova tarefa'/>
-                <button type='submit'>
+                    placeholder='Adicione uma nova tarefa'
+                />
+                <button
+                    type='submit'
+                    disabled= {IsInvalidTextArea}
+                >
                     <span>Criar</span>
                     <PlusCircle/>
                 </button>

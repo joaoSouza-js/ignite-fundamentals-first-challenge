@@ -32,7 +32,8 @@ body,input,textarea{
     font-size: 1rem;
     line-height: 140%;
     font-family: "Inter", Arial, Helvetica, sans-serif;
-    -webkit-font-somothing: antialiased
+    -webkit-font-somothing: antialiased;
+    
 }
 
 body{
@@ -41,4 +42,12 @@ body{
 
 :focus{
     outline: none;
+}
+
+@media (max-width: 420px){
+    
+
+    html{
+        font-size: 87.5%;
+    }
 }
