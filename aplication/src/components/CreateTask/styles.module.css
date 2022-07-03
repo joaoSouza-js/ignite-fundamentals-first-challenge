@@ -1,9 +1,11 @@
-section.createTaskContainer{
+
+section.createTaskContainer {
     width: 100%;
 }
-
 section.createTaskContainer form{
     display: flex;
+    justify-content: space-between;
+    width: 100%;
     column-gap: .5rem;
 }
 

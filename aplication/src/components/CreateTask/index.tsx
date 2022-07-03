@@ -1,20 +1,21 @@
+import {v4 as uuidv4} from 'uuid'
 import {PlusCircle} from 'phosphor-react'
-import { ChangeEvent,FormEvent,isValidElement,SetStateAction, useState } from 'react'
+import  {ChangeEvent,FormEvent,SetStateAction,useState} from 'react'
+
 import { task } from '../../App'
+
 import styles from './styles.module.css'
 
 interface CreateTaskProps {
-    taskTextContent: string
-    setTaskTextContent: React.Dispatch<SetStateAction<string>>
     setAllTasks: React.Dispatch<SetStateAction<task[]>>
 }
 
 export function CreateTask({
-    setTaskTextContent,
-    taskTextContent,
+ 
     setAllTasks}:CreateTaskProps){
 
-    const [taskId, setTaskId] = useState(1)
+    const [taskTextContent, setTaskTextContent] = useState('')
+
 
     const IsInvalidTextArea = taskTextContent === ''
 
@@ -27,7 +28,7 @@ export function CreateTask({
 
         const newTask = 
         {
-            id: taskId,
+            id: uuidv4(),
             content: taskTextContent,
             isCompleted: false
         }
@@ -35,9 +36,7 @@ export function CreateTask({
         setAllTasks(state => {
             return[...state,newTask]
         })
-        setTaskId(state => {
-            return state + 1
-        })
+     
         setTaskTextContent('')
     
     }

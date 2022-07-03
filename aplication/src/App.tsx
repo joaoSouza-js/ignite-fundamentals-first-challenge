@@ -1,31 +1,35 @@
 import "./global/styles.module.css"
 import  styles from './app.module.css'
 
+import {  useState } from "react"
 import clipBoardImage from './assets/Clipboard.svg'
 
+import { Task } from "./components/Task"
+import { Modal } from "./components/Modal"
 import { Header } from "./components/Header"
 import { CreateTask } from "./components/CreateTask"
-import { Task } from "./components/Task"
-import {  useState } from "react"
 
 export interface  task {
-  id: number
+  id: string
   content: string
   isCompleted: boolean
 }
 
 function App() {
-  const [allTasks, setAllTasks] = useState<task[]>([])
-  const [taskTextContent, setTaskTextContent] = useState('')
 
-  const tasksDone = allTasks.filter(task =>{
+  const [allTasks, setAllTasks] = useState<task[]>([])
+  const [taskIdToDelete, setTaskIdToDelete] = useState('')
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const tasksDone = allTasks.filter(task => {
     return task.isCompleted === true
   })
 
-  function deleteOneTask(taskId: number){
+
+  function deleteOneTask(){
 
     const allTasksWithoutOne = allTasks.filter(task => {
-      return task.id != taskId
+      return task.id != taskIdToDelete
     })
 
     setAllTasks( state => {
@@ -34,35 +38,42 @@ function App() {
 
   }
 
-function checkCompletedTask(taskId: number){
-  const allTaksWithIsCompletdUpdate = allTasks.map(task => {
-    if(task.id === taskId){
-      task.isCompleted
-      ? task.isCompleted = false
-      : task.isCompleted = true
-      
-    }
-    return task
+  function handleCheckCompletedTask(taskId: string){
+    const allTaksWithIsCompletdUpdate = allTasks.map(task => {
+      if(task.id === taskId){
+        task.isCompleted
+        ? task.isCompleted = false
+        : task.isCompleted = true
+        
+      }
+      return task
 
-  })
-  setAllTasks(allTaksWithIsCompletdUpdate)
-}
+    })
+    setAllTasks(allTaksWithIsCompletdUpdate)
+  }
 
-
+  function changeModalState(){
+    isModalVisible
+    ? setIsModalVisible(state => {
+      return(false)
+    })
+    : setIsModalVisible(state => {
+      return true
+    })
+  }
 
   return (
-    <div className="App">
+    <div className={styles.app}>
+
       <Header/>
+
       <main className={styles.container}>
+
         <CreateTask
           setAllTasks = {setAllTasks}
-          taskTextContent = {taskTextContent}
-          setTaskTextContent = {setTaskTextContent}
         />
         
-        <section
-
-         className={styles.taskStatus}>
+        <section className={styles.taskStatus}>
           <div className={styles.created}>
             <strong>Tarefas Criadas</strong>
             <span>{allTasks.length}</span>
@@ -95,16 +106,24 @@ function checkCompletedTask(taskId: number){
             allTasks.map(task =>{
               return(
                 <Task
-                  task = {task}
-                  onDeleteOneTask = {deleteOneTask}
-                  onCheckCompletedTask = {checkCompletedTask}
                   key={task.id}
+                  task = {task}
+                  onChangeModalState = {changeModalState}
+                  setTaskIdToDelete = {setTaskIdToDelete}
+                  onCheckCompletedTask = {handleCheckCompletedTask}
                 />
               )
             })
           }    
         </article>
       </main>
+
+      <Modal
+        IsModalVisible = {isModalVisible}
+        onChangeModalState = {changeModalState}
+        onDeleteOneTask = {deleteOneTask}
+      />
+
     </div>
   )
 }

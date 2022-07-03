@@ -1,35 +1,40 @@
-import {Trash} from 'phosphor-react'
-import { useState } from 'react'
 import { task } from '../../App'
+
+import {Trash} from 'phosphor-react'
+import { SetStateAction } from 'react'
 
 import styles from './styles.module.css'
 
 interface TaskProps{
-    task: task
-    onDeleteOneTask: (taskId:number) => void,
-    onCheckCompletedTask: (taskId: number) => void
+    task: task,
+    onChangeModalState: () => void,
+    onCheckCompletedTask: (taskId: string) => void
+    setTaskIdToDelete: React.Dispatch<SetStateAction<string>>
     
 }
 
 export function Task({
     task,
-  
-    onDeleteOneTask,
+    onChangeModalState,
+    setTaskIdToDelete,
     onCheckCompletedTask }:TaskProps){
 
-    function handleDeleteOneTask(){
-        onDeleteOneTask(task.id)
+    
+
+    function handleCheckCompletedTask(){
+        onCheckCompletedTask(task.id)
     }
 
-    function handleChckCompletedTask(){
-        onCheckCompletedTask(task.id)
+    function handleSetTaskIdtoDelete(){
+        setTaskIdToDelete(task.id)
+        onChangeModalState()
     }
 
     return(
         <div className={styles.task}>
             <input
                 defaultChecked = {task.isCompleted}
-                onChange={handleChckCompletedTask}
+                onChange={handleCheckCompletedTask}
                 id={`checkbox${task.id}`}
                 type='checkbox'
            
@@ -42,7 +47,7 @@ export function Task({
             }>{task.content}</p>
            
             <button
-                onClick={handleDeleteOneTask}
+                onClick={handleSetTaskIdtoDelete}
                 title='Lixiera'>
                 <Trash
                     size={'1.090rem'}
