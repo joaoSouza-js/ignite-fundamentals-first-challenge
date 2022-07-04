@@ -1,6 +1,6 @@
 li.task {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     
     border-radius: 8px;
@@ -8,6 +8,7 @@ li.task {
     column-gap: .75rem;
 
     width: 100%;
+    min-height: 4.5rem;
     background-color: var(--gray500);
     margin-top: .75rem;
 }
