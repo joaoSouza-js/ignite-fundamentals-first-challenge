@@ -103,17 +103,20 @@ function App() {
               </div> 
 
             :
-            allTasks.map(task =>{
-              return(
-                <Task
-                  key={task.id}
-                  task = {task}
-                  onChangeModalState = {changeModalState}
-                  setTaskIdToDelete = {setTaskIdToDelete}
-                  onCheckCompletedTask = {handleCheckCompletedTask}
-                />
-              )
-            })
+            <ul>{
+                allTasks.map(task => {
+                  return(
+                    <Task
+                      key={task.id}
+                      task = {task}
+                      onChangeModalState = {changeModalState}
+                      setTaskIdToDelete = {setTaskIdToDelete}
+                      onCheckCompletedTask = {handleCheckCompletedTask}
+                    />
+                  )
+                })
+            }
+            </ul>
           }    
         </article>
       </main>

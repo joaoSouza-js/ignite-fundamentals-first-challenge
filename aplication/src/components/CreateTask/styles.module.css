@@ -4,14 +4,13 @@ section.createTaskContainer {
 }
 section.createTaskContainer form{
     display: flex;
-    justify-content: space-between;
     width: 100%;
     column-gap: .5rem;
 }
 
 section.createTaskContainer form textarea {
     padding: 1rem;
-    width: 39.25rem;
+    flex: 1;
     border-radius: 8px;
     background-color: var(--gray500);
     resize: none;

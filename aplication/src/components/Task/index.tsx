@@ -31,7 +31,7 @@ export function Task({
     }
 
     return(
-        <div className={styles.task}>
+        <li className={styles.task}>
             <input
                 defaultChecked = {task.isCompleted}
                 onChange={handleCheckCompletedTask}
@@ -54,6 +54,6 @@ export function Task({
                 />
             </button>
             
-        </div>
+        </li>
     )
 }
