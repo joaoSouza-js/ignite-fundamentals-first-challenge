@@ -11,6 +11,9 @@ li.task {
     background-color: var(--gray500);
     margin-top: .75rem;
 }
+li.task:nth-of-type(1){
+    margin-top: 0;
+}
 
 li.task input{
     display: none;
