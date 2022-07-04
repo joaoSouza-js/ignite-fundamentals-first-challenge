@@ -75,7 +75,7 @@ function App() {
         
         <section className={styles.taskStatus}>
           <div className={styles.created}>
-            <strong>Tarefas Criadas</strong>
+            <strong>Tarefas criadas</strong>
             <span>{allTasks.length}</span>
           </div>
           <div className={styles.done}>
