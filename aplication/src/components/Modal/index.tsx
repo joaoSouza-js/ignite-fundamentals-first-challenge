@@ -19,6 +19,15 @@ export function Modal({IsModalVisible, onChangeModalState,onDeleteOneTask}:Modal
         handleChangeModal()
     }
 
+    function handleModalOutSidClick(event: MouseEvent<HTMLDivElement>){
+        const div = event.target as HTMLDivElement
+
+        if(div.className === styles.modalContainer){
+            onChangeModalState()
+        }
+
+    }
+
  
 
     
@@ -26,8 +35,9 @@ export function Modal({IsModalVisible, onChangeModalState,onDeleteOneTask}:Modal
         <>
             {IsModalVisible
             && <div
+                onClick={handleModalOutSidClick}
                 className={styles.modalContainer}
-             >
+                >
                     <div className={styles.content}>
                         <strong>Excluir comentário</strong>
                         <p>Você tem certeza que gostaria de excluir este comentário?</p>

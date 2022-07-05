@@ -80,7 +80,10 @@ li.task button:hover{
 
 li.task svg:hover{
 
-
- 
     color: var(--danger);
+}
+
+li.task svg{
+    box-sizing: content-box ;
+    padding: 0.16rem;
 }
